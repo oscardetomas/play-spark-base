@@ -4,6 +4,8 @@ import org.apache.spark.SparkContext
 import org.apache.spark.sql.hive.HiveContext
 import org.slf4j.LoggerFactory
 
+import scala.math.random
+
 /**
   * Created by oscar on 16/06/17.
   */
@@ -11,13 +13,17 @@ object PlaySparkBase {
 
   @transient lazy private val Log = LoggerFactory.getLogger(getClass.getName)
 
-  def process(sc: SparkContext, hiveContext: HiveContext): Unit = {
+  def process(sc: SparkContext,
+              hiveContext: HiveContext,
+              args: Array[String]): Unit = {
+
     Log.info("Init process...")
 
     executeInSparkContext(sc){
       // Execution in Spark Context
 
-      testProject(sc)
+      //testProject(sc)
+      sparkPi(sc, args)
 
     }
 
@@ -41,6 +47,22 @@ object PlaySparkBase {
 
     val linesSparkCounter = textFile.filter(line => line.contains("Spark")).count()
     println("How many lines contain \"Spark\": " + linesSparkCounter)
+
+  }
+
+  private def sparkPi(sc: SparkContext, args: Array[String]): Unit = {
+
+    val slices = if (args.length > 0) args(0).toInt else 2
+    val n = Int.MaxValue
+    val count = sc.parallelize(1 until n, slices).map { i =>
+      val x = random * 2 - 1
+      val y = random * 2 - 1
+      if (x*x + y*y < 1) 1 else 0
+    }.reduce(_ + _)
+
+    println("Pi is roughly " + 4.0 * count / (n - 1))
+
+    scala.io.StdIn.readLine("Press any key to finish...")
 
   }
 

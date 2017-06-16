@@ -1,4 +1,4 @@
-# Play Spark
+# Play Spark Base
 
 Proyecto base para probar funcionalidades spark.
 
