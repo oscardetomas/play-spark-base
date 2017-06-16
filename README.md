@@ -1,6 +1,6 @@
 # Play Spark Base
 
-Proyecto base para probar funcionalidades spark.
+Proyecto base para probar funcionalidades spark...
 
 ## Requirements
 
