@@ -20,9 +20,9 @@ resolvers ++= {
   )
 }
 
-libraryDependencies+= "org.apache.spark" %% "spark-core"  % "1.6.0" //% "provided,test" excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava") // exclude("org.apache.hadoop", "hadoop-client")
-libraryDependencies+= "org.apache.spark" %% "spark-mllib" % "1.6.0" //% "provided,test"  excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava")
-libraryDependencies+= "org.apache.spark" %% "spark-hive"  % "1.6.0" //% "provided,test"  excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava")
+libraryDependencies+= "org.apache.spark" %% "spark-core"  % "2.1.1" % "provided,test" excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava") // exclude("org.apache.hadoop", "hadoop-client")
+libraryDependencies+= "org.apache.spark" %% "spark-mllib" % "2.1.1" % "provided,test"  excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava")
+libraryDependencies+= "org.apache.spark" %% "spark-hive"  % "2.1.1" % "provided,test"  excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava")
 
 libraryDependencies ++= {
   Seq(
