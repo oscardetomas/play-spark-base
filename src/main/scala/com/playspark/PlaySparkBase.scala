@@ -13,7 +13,7 @@ object PlaySparkBase {
 
   @transient lazy private val Log = LoggerFactory.getLogger(getClass.getName)
 
-  def process(sc: Sparkcontext,
+  def process(sc: SparkContext,
               hiveContext: HiveContext,
               args: Array[String]): Unit = {
 
