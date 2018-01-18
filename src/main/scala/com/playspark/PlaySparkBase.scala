@@ -13,7 +13,7 @@ object PlaySparkBase {
 
   @transient lazy private val Log = LoggerFactory.getLogger(getClass.getName)
 
-  def process(sc: SparkContext,
+  def process(sc: Sparkcontext,
               hiveContext: HiveContext,
               args: Array[String]): Unit = {
 
@@ -39,6 +39,16 @@ object PlaySparkBase {
     * PROCESSING METHODS
     * ----------------------------------------------
     */
+
+  private def testUDF(sc: SparkContext): Unit = {
+
+    val textFile = sc.textFile("README.md")
+    println("Number of items in README.md : " + textFile.count())
+
+    val linesSparkCounter = textFile.filter(line => line.contains("Spark")).count()
+    println("How many lines contain \"Spark\": " + linesSparkCounter)
+
+  }
 
   private def testProject(sc: SparkContext): Unit = {
 
