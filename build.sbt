@@ -20,13 +20,14 @@ resolvers ++= {
   )
 }
 
-libraryDependencies+= "org.apache.spark" %% "spark-core"  % "2.1.0" % "provided,test" excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava") // exclude("org.apache.hadoop", "hadoop-client")
-libraryDependencies+= "org.apache.spark" %% "spark-mllib" % "2.1.0" % "provided,test"  excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava")
-libraryDependencies+= "org.apache.spark" %% "spark-hive"  % "2.1.0" % "provided,test"  excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava")
+val sparkVersion = "1.6.0"
+libraryDependencies+= "org.apache.spark" %% "spark-core"  % sparkVersion % "provided,test" excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava") // exclude("org.apache.hadoop", "hadoop-client")
+libraryDependencies+= "org.apache.spark" %% "spark-mllib" % sparkVersion % "provided,test"  excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava")
+libraryDependencies+= "org.apache.spark" %% "spark-hive"  % sparkVersion % "provided,test"  excludeAll (ExclusionRule(organization = "org.slf4j")) exclude(org="com.google.guava",name="guava")
 
 libraryDependencies ++= {
   Seq(
-    "org.scalatest" %% "scalatest" % "2.2.1" % "test",// excludeAll (ExclusionRule(organization = "org.slf4j")),
+    // "org.scalatest" %% "scalatest" % "2.2.1" % "test",// excludeAll (ExclusionRule(organization = "org.slf4j")),
     "joda-time" % "joda-time" % "2.9.4",
     "org.joda" % "joda-convert" % "1.8",
     "org.slf4j" % "slf4j-api" % "1.7.10",

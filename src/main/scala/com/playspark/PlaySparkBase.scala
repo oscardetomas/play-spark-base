@@ -70,9 +70,9 @@ object PlaySparkBase {
       if (x*x + y*y < 1) 1 else 0
     }.reduce(_ + _)
 
-    println("Pi is roughly " + 4.0 * count / (n - 1))
+    Log.info("Pi is roughly " + 4.0 * count / (n - 1))
 
-    scala.io.StdIn.readLine("Press any key to finish...")
+    //scala.io.StdIn.readLine("Press any key to finish...")
 
   }
 

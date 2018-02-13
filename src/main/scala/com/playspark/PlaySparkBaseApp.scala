@@ -20,24 +20,24 @@ object PlaySparkBaseApp {
     val sparkConf = new SparkConf().setAppName("PlaySparkBaseApp")
 
     // FOR LOCAL EXECUTION UNCOMMENT
-    .setMaster("local[*]").setAppName("PlaySparkBaseApp")
+//    .setMaster("local[*]").setAppName("PlaySparkBaseApp")
 
     // FOR CLUSTER EXECUTION UNCOMMENT
     //Set Cluster Yarn parameters
-//    sparkConf.set("spark.yarn.executor.memoryOverhead", "1024")
+    sparkConf.set("spark.yarn.executor.memoryOverhead", "1024")
 //      .set("spark.yarn.driver.memoryOverhead", "1024")
-//      .set("spark.yarn.queue", "root.DyA.Apps")
+      .set("spark.yarn.queue", "root.DyA.Apps")
 //
-//      .set("spark.rdd.compress", "true")
-//      .set("spark.broadcast.compress", "true")
-//      .set("spark.io.compression.codec", "snappy")
-//      .set("spark.shuffle.compress", "true")
-//      .set("spark.shuffle.spill.compress", "true")
+      .set("spark.rdd.compress", "true")
+      .set("spark.broadcast.compress", "true")
+      .set("spark.io.compression.codec", "snappy")
+      .set("spark.shuffle.compress", "true")
+      .set("spark.shuffle.spill.compress", "true")
 //
 //      //Set kryo serializer options
-//      .set("spark.kryoserializer.buffer", "128k")
-//      .set("spark.kryoserializer.buffer.max", "128m")
-//      .set("spark.kryo.registrator", classOf[DateUtils.TimeSeriesKryoRegistrator].getName)
+      .set("spark.kryoserializer.buffer", "128k")
+      .set("spark.kryoserializer.buffer.max", "128m")
+      .set("spark.kryo.registrator", classOf[DateUtils.TimeSeriesKryoRegistrator].getName)
 
     val sparkContext = new SparkContext(sparkConf)
     val hiveContext = new HiveContext(sparkContext)
